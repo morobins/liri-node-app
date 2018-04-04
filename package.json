@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/morobins/liri-node-app#readme",
   "dependencies": {
-    "env": "0.0.2",
-    "node-spotify-api": "^1.0.7"
+    "dotenv": "^5.0.1",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.85.0",
+    "twitter": "^1.7.1"
   }
 }
