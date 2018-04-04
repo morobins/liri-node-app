@@ -37,22 +37,25 @@ function tweet() {
     count: 20
   };
   client.get('statuses/user_timeline', params, function (error, tweets, response) {
-        if (error) {
-          return console.log(error);
-        }
-        console.log(tweets);
-      });
-    };
-      // var client = new Twitter({
-      //   consumer_key: '',
-      //   consumer_secret: '',
-      //   access_token_key: '',
-      //   access_token_secret: ''
-      // });
+    if (error) {
+      return console.log(error);
+    }
+    // console.log(tweets);
+    for (var i = 0; i < tweets.length; i++) {
+      console.log(tweets[i].created_at);
+      console.log(tweets[i].text);
+    }
+  });
+};
+// var client = new Twitter({
+//   consumer_key: '',
+//   consumer_secret: '',
+//   access_token_key: '',
+//   access_token_secret: ''
+// });
 
-      // var params = {screen_name: 'nodejs'};
-      // client.get('statuses/user_timeline', params, function(error, tweets, response) {
-      //   if (!error) {
-      //     console.log(tweets);
-      //   }
-  
+// var params = {screen_name: 'nodejs'};
+// client.get('statuses/user_timeline', params, function(error, tweets, response) {
+//   if (!error) {
+//     console.log(tweets);
+//   }
