@@ -16,23 +16,22 @@ var command = process.argv[2];
 
 var input = process.argv.slice(3).join(' ');
 
-switch (command) {
-  case "my-tweets":
-    getTweets();
-    break;
-  case "spotify-this-song":
-    getSong(input);
-    break;
-  case "movie-this":
-    getMovie(input);
-    break;
-  case "do-what-it-says":
-    random();
-    break;
-  default:
-    console.log("You didn't put in a proper search term. PLease use 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.")
-}
-
+  switch (command) {
+    case "my-tweets":
+      getTweets();
+      break;
+    case "spotify-this-song":
+      getSong(input);
+      break;
+    case "movie-this":
+      getMovie(input);
+      break;
+    case "do-what-it-says":
+      random();
+      break;
+    default:
+      console.log("You didn't put in a proper search term. Please use 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.")
+};
 //function to return the last 20 tweets using twitter npm
 function getTweets() {
   var params = {
@@ -100,7 +99,7 @@ function getMovie(input) {
 }
 
 function random() {
-  fs.readFile("random.txt", "utf8", function(error, data) {
+  fs.readFile("random.txt", "utf8", function (error, data) {
     // If the code experiences any errors it will log the error to the console.
     if (error) {
       return console.log(error);
@@ -111,5 +110,10 @@ function random() {
     var dataArr = data.split(",");
     // We will then re-display the content as an array for later use.
     console.log(dataArr);
+    //This will push the command and input from random.txt into the getSong function
+    if (dataArr[0] === "spotify-this-song") {
+			song = dataArr[1];
+      getSong(song);
+    }
   });
 }
