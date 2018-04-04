@@ -78,11 +78,10 @@ function getSong(input) {
 
 function getMovie(input) {
   if (input === '') {
-    movieName = "Mr. Nobody";
+    movieName = 'Mr. Nobody';
   } else {
     movieName = input;
   }
-  var movieName = process.argv.slice(3).join(" ");
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
   request(queryUrl, function (err, response, data) {
@@ -91,7 +90,7 @@ function getMovie(input) {
       console.log("Movie Title: " + JSON.parse(data).Title);
       console.log("Released in: " + JSON.parse(data).Year);
       console.log("IMDB Rating: " + JSON.parse(data).imdbRating);
-      // console.log(JSON.parse(data).Ratings[1]);
+      console.log(JSON.parse(data).Ratings[1]);
       console.log("Produced in: " + JSON.parse(data).Country);
       console.log("Language: " + JSON.parse(data).Language);
       console.log("Plot: " + JSON.parse(data).Plot);
