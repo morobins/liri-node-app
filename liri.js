@@ -53,7 +53,6 @@ function getTweets() {
   });
 };
 
-
 //allow input with "spotify-this-song"
 function getSong(input) {
   if (input === '') {
