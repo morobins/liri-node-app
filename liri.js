@@ -12,8 +12,10 @@ var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 // console.log(keys.twitter);
 
+// Place to hold the command
 var command = process.argv[2];
 
+// Place to hold the song/movie
 var input = process.argv.slice(3).join(' ');
 
   switch (command) {
@@ -32,6 +34,7 @@ var input = process.argv.slice(3).join(' ');
     default:
       console.log("You didn't put in a proper search term. Please use 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.")
 };
+
 //function to return the last 20 tweets using twitter npm
 function getTweets() {
   var params = {
@@ -75,6 +78,7 @@ function getSong(input) {
   });
 }
 
+//allow input with "movie-this"
 function getMovie(input) {
   if (input === '') {
     movieName = 'Mr. Nobody';
@@ -98,6 +102,7 @@ function getMovie(input) {
   });
 }
 
+//read random.txt and run "spotify-this-song"
 function random() {
   fs.readFile("random.txt", "utf8", function (error, data) {
     // If the code experiences any errors it will log the error to the console.
