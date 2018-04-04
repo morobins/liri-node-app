@@ -16,10 +16,10 @@ var command = process.argv[2];
 
 switch (command) {
   case "my-tweets":
-    tweet();
+    getTweets();
     break;
   case "spotify-this-song":
-    spotify();
+    getSong();
     break;
   case "movie-this":
     movies();
@@ -31,7 +31,7 @@ switch (command) {
     console.log("You didn't put in a proper search term. PLease use 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.")
 }
 
-function tweet() {
+function getTweets() {
   var params = {
     screen_name: 'moMoneyMoRamen',
     count: 20
@@ -47,15 +47,20 @@ function tweet() {
     }
   });
 };
-// var client = new Twitter({
-//   consumer_key: '',
-//   consumer_secret: '',
-//   access_token_key: '',
-//   access_token_secret: ''
-// });
 
-// var params = {screen_name: 'nodejs'};
-// client.get('statuses/user_timeline', params, function(error, tweets, response) {
-//   if (!error) {
-//     console.log(tweets);
-//   }
+
+//need to get the right data
+function getSong() {
+  var song = process.argv.slice(3).join(' ');
+  spotify.search({
+    type: 'track',
+    query: song,
+    limit:3
+  }, function (err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+    // console.log(JSON.stringify(data, null, 2));
+    console.log(JSON.stringify(data.tracks[0], null, 2));
+  });
+}
